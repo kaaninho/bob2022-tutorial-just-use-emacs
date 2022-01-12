@@ -1,0 +1,156 @@
+#+title: Ideen und Orga
+
+* Struktur
+
+1. Einführung Emacs
+2. Emacs Lisp
+3. Konfiguration
+4. Interessante Major-/Minor-Modes
+5. Evil-Mode
+6. Eigene Library
+
+* Einführung Emacs
+
+** Geschichte Emacs
+** Unterschied zu gängigen IDEs
+
+** Tastenbefehle Basics
+
+C = Strg
+M = Alt
+
+C-a   = Strg gedrückt halten und dann a
+C-x b = Strg gedrückt halten und dann x,
+        beides loslassen und dann b
+
+- Cursor-Bewegung: C-f, C-b, C-p, C-n
+- Abbruch: C-g
+- Menü: M-x
+  Beispiel: global-line-numbers-mode
+
+** Emacs Lisp
+** Vorgefertigte Emacs-Distros
+
+* Emacs Lisp
+
+- Syntax
+- Funktion (interactive)
+
+#+begin_src lisp
+;; Custom command.
+(defun show-current-time ()
+  "Show current time."
+  (interactive)
+  (message (current-time-string)))
+#+end_src
+
+
+* Konfiguration
+** Vorgehen init.el
+
+- Erst zusammen Emacs starten
+- dann in =init.el= erste 3 Zeilen auskommentieren
+- Emacs neustarten
+- Stück für Stück einkommentieren und auswerten (=C-x C-e=)
+
+** Weitere Konfigurationen
+
+- ?!use-package?!
+- Emacs as Server
+- hooks
+
+*** paredit-mode
+
+zusammen installieren:
+
+- zu =package=-Liste hinzufügen
+- Hooks setzen
+
+#+begin_src lisp
+;; Enable Paredit.
+(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+(add-hook 'lisp-mode-hook 'enable-paredit-mode)
+#+end_src
+
+- ?Rainbow-Delimiters?
+
+#+begin_src elisp
+;; Enable Rainbow Delimiters.
+(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'ielm-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+#+end_src
+
+*** Custom key sequences
+
+- whitespace Ende der Zeile entfernen
+
+#+begin_src lisp
+(global-set-key (kbd "C-c d") 'delete-trailing-whitespace)
+#+end_src
+
+* Major-/Minor-Modes
+
+- magit
+- projectile / project.el / ?persp-mode?
+- helm/ivy
+- latex
+- Coding
+  - elixir u lsp-mode
+  - clojure u cider-jack-in + REPL
+- org-mode
+- org-export
+- org-agenda und org-capture
+- Timeclock
+- mu4e
+- undo (undo-tree) und Code-Region-undo
+- Shell
+- Tramp
+
+- ?Treemacs?
+
+* Eigene Library
+
+** Ideen
+
+- Protokoll-Mode
+
+* Vorbereitung für Teilnehmer:innen
+
+- Emacs installieren (>= 26)
+- Konfiguration einspielen:
+  - Starte Emacs
+  - Drücke =Strg und x= und dann =Strg und f=
+  - Tippe ein: =~/.emacs.d/init.el=
+  - Kopiere Inhalt von FIXME
+  - Füge Inhalt ein in Emacs mit =Strg und y=
+  - Speichern mit =Strg und x= dann =Strg und s=
+  - Schließe Emacs und öffne es wieder
+  - Es sollte nach einer (sehr kurzen) Zeit eine Erfolgsmeldung kommen
+
+** init.el für Teilnehmer:innen
+
+*** Einstieg init.el von Simon
+
+ https://github.com/susam/emfy
+
+*** Weiter Snippets
+
+- Undo umbinden
+
+#+begin_src lisp
+;; Custom key sequences.
+(global-set-key (kbd "C-z") 'undo)
+#+end_src
+
+- Am Schluss:
+  #+begin_src lisp
+  (progn
+    (switch-to-buffer "a-random-buffer")
+    (insert "\n\nDu hast es geschafft, Emacs ist für das Tutorial eingerichtet!"))
+  #+end_src
+
+
+
+
