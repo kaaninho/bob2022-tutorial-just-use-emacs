@@ -13,7 +13,6 @@
 
 ** Geschichte Emacs
 ** Unterschied zu gängigen IDEs
-
 ** Tastenbefehle Basics
 
 C = Strg
@@ -25,11 +24,13 @@ C-x b = Strg gedrückt halten und dann x,
 
 - Cursor-Bewegung: C-f, C-b, C-p, C-n
 - Abbruch: C-g
-- Menü: M-x
-  Beispiel: global-line-numbers-mode
+- Menü: M-x und dann Funktionsnamen eintippen
+  -> Beispiel: display-line-numbers-mode
 
 ** Emacs Lisp
 ** Vorgefertigte Emacs-Distros
+- Spacemacs
+- Doom Emacs
 
 * Emacs Lisp
 
@@ -44,7 +45,6 @@ C-x b = Strg gedrückt halten und dann x,
   (message (current-time-string)))
 #+end_src
 
-
 * Konfiguration
 ** Vorgehen init.el
 
@@ -57,7 +57,17 @@ C-x b = Strg gedrückt halten und dann x,
 
 - ?!use-package?!
 - Emacs as Server
-- hooks
+*** global settings
+
+(global-line-numbers-mode 1)
+
+*** hooks
+
+- Delete whitespace before saving
+
+  #+begin_src elisp
+  (add-hook 'before-save-hook #'delete-trailing-whitespace)
+  #+end_src
 
 *** paredit-mode
 
@@ -107,6 +117,7 @@ zusammen installieren:
 - undo (undo-tree) und Code-Region-undo
 - Shell
 - Tramp
+- Keybindings (Extrem: pro Zeile E-Mail versenden)
 
 - ?Treemacs?
 
@@ -115,6 +126,90 @@ zusammen installieren:
 ** Ideen
 
 - Protokoll-Mode
+  - Anwesende: hinzufügen mit E-Mail-Adresse nachschauen
+  - Am Schluss: =C-c C-m= verschickt Mail mit Protokoll an alle
+  - Johannes Vorschlag: von einem Protokoll auf Unterpunkte von
+    vorherigen Protokollen Link erstellen
+
+** Teilnehmer hinzufügen
+von http://pragmaticemacs.com/emacs/tweaking-email-contact-completion-in-mu4e/
+
+#+begin_src emacs-lisp
+;;; NEEDED?
+(require 'subr-x)
+
+;;; NEEDED?
+;;my favourite contacts - these will be put at front of list
+(setq bjm/contact-file "/home/kaan/.emacs.dvanilla/.contacts")
+
+(defun bjm/read-contact-list ()
+  "Return a list of email addresses"
+  (with-temp-buffer
+    (insert-file-contents bjm/contact-file)
+    (split-string (buffer-string) "\n" t)))
+
+(defun bjm/ivy-select-and-insert-contact-anywhere ()
+  (interactive)
+  (let (contacts-list contact)
+    ;;append full sorted contacts list to favourites and delete duplicates
+    (setq contacts-list
+          (delq nil (delete-dups (append (bjm/read-contact-list)  (hash-table-keys mu4e~contacts)))))
+    (setq contact
+          (ivy-read "Contact: "
+                    contacts-list
+                    :re-builder #'ivy--regex
+                    :sort nil))
+        (unless (equal contact "")
+          (insert contact))))
+#+end_src
+
+
+das braucht es glaub gar nicht:
+
+#+begin_src emacs-lisp
+(defun bjm/ivy-select-and-insert-contact (&optional start)
+  (interactive)
+  ;;make sure mu4e contacts list is updated - I was having
+  ;;intermittent problems that this was empty but couldn't see why
+  (mu4e~request-contacts)
+  (let ((mail-abbrev-mode-regexp mu4e~compose-address-fields-regexp)
+        (eoh ;; end-of-headers
+         (save-excursion
+           (goto-char (point-min))
+           (search-forward-regexp mail-header-separator nil t)))
+        ;;append full sorted contacts list to favourites and delete duplicates
+        (contacts-list
+         (delq nil (delete-dups (append (bjm/read-contact-list)  (hash-table-keys mu4e~contacts))))))
+    (when (and eoh (> eoh (point)) (mail-abbrev-in-expansion-header-p))
+      (let* ((end (point))
+             (start
+              (or start
+                  (save-excursion
+                    (re-search-backward "\\(\\`\\|[\n:,]\\)[ \t]*")
+                    (goto-char (match-end 0))
+                    (point))))
+             (contact
+              (ivy-read "Contact: "
+                        contacts-list
+                        :re-builder #'ivy--regex
+                        :sort nil
+                        :initial-input (buffer-substring-no-properties start end))))
+        (unless (equal contact "")
+          (kill-region start end)
+          (insert contact)))))
+#+end_src
+
+musste oben =mu4e~sort-contacts-for-completion= rauslöschen, damit es
+kompiliert.
+
+hier mal paar sachen, die ich probiert hab:
+
+#+begin_src emacs-lisp
+(mu4e~compose-setup-completion)
+mu4e~contacts
+completion-at-point-functions
+(mu4e~compose-complete-contact "joha")
+#+end_src
 
 * Vorbereitung für Teilnehmer:innen
 
@@ -149,8 +244,4 @@ zusammen installieren:
   (progn
     (switch-to-buffer "a-random-buffer")
     (insert "\n\nDu hast es geschafft, Emacs ist für das Tutorial eingerichtet!"))
-  #+end_src
-
-
-
-
+  #+end_
