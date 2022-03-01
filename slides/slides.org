@@ -1,0 +1,462 @@
+#+title: Just use Emacs!
+#+author: Kaan Sahin
+#+date: 2022-03-01
+#+settings: (setq-local fill-column 56)
+
+* Just use Emacs!
+
+
+
+[[./emacs-logo-old.svg]]
+
+
+
+Kaan Sahin, BOB 2022
+
+* Einführung Emacs
+
+** Emacs ist /alt/
+
+* Einführung Emacs
+
+** Emacs ist /alt/
+
+- 1976 am MIT erste Funktionalitäten entstanden
+- 1984 Beginn der Entwicklung an GNU Emacs (Richard
+  Stallman)
+
+* Einführung Emacs
+
+** Emacs ist /alt/
+
+- 1976 am MIT erste Funktionalitäten entstanden
+- 1984 Beginn der Entwicklung an GNU Emacs (Richard
+  Stallman)
+
+Emacs steht für Editor MACroS
+
+* Einführung Emacs
+
+** Emacs ist /alt/
+
+* Einführung Emacs
+
+** Emacs ist /alt/ und wird /trotzdem/ noch benutzt
+
+* Einführung Emacs
+
+** Emacs ist /alt/ und wird /trotzdem/ noch benutzt
+
+Warum?
+
+* Einführung Emacs
+
+** Emacs ist /alt/ und wird /trotzdem/ noch benutzt
+
+Warum?
+
+#+ATTR_ORG: :width 1200
+[[./editor-of-a-life-time.png]]
+
+* Einführung Emacs
+
+** Emacs ist /alt/ und wird /trotzdem/ noch benutzt
+
+Warum?
+
+#+begin_quote
+"In fact I don't just use Emacs, I live in Emacs."
+
+- Perry E. Metzger
+#+end_quote
+
+
+* Einführung Emacs
+
+** Emacs ist /alt/ und wird /trotzdem/ noch benutzt - warum?
+
+#+ATTR_ORG: :width 1200
+[[./great-at-editing.png]]
+
+
+* Einführung Emacs
+
+** Emacs ist /alt/ und wird /trotzdem/ noch benutzt - warum?
+
+- "Great at Editing"
+- "Editor of a Lifetime"
+- "Living in Emacs"
+- "Extensibility"
+
+* Einführung Emacs
+
+** Emacs ist /alt/ und wird /trotzdem/ noch benutzt - warum?
+
+- "Great at Editing"
+- "Editor of a Lifetime"
+- "Living in Emacs" --> Vorteile später nochmal
+- "Extensibility"
+
+* Einführung Emacs
+
+** Basics: Tastenbefehle
+
+* Einführung Emacs
+
+** Basics: Tastenbefehle
+
+=C= = Strg
+=M= = Alt
+
+* Einführung Emacs
+
+** Basics: Tastenbefehle
+
+=C= = Strg
+=M= = Alt
+
+=C-a=   = Strg gedrückt halten, dann a
+=C-x b= = Strg gedrückt halten, dann x,
+        beides loslassen, dann b
+
+* Einführung Emacs
+
+** Basics: Tastenbefehle
+
+=C= = Strg
+=M= = Alt
+
+=C-a=   = Strg gedrückt halten, dann a
+=C-x b= = Strg gedrückt halten, dann x,
+        beides loslassen, dann b
+
+- Cursor-Bewegung: =C-f=, =C-b=, =C-p=, =C-n=
+- Abbruch: =C-g=
+- Menü: =M-x= und dann Funktionsnamen eintippen
+  -> Beispiel: =display-line-numbers-mode=
+
+* Einführung Emacs
+
+** Basics: Tastenbefehle
+
+Befehle, die mit =C-x= beginnen, sind meist globale.
+
+* Einführung Emacs
+
+** Basics: Tastenbefehle
+
+Befehle, die mit =C-x= beginnen, sind meist globale.
+
+Befehle, die mit =C-c= beginnen, sind meist
+Major-Mode-abhängig.
+
+* Einführung Emacs
+
+** Basics: Tastenbefehle
+
+Befehle, die mit =C-x= beginnen, sind meist globale.
+
+Befehle, die mit =C-c= beginnen, sind meist
+Major-Mode-abhängig.
+
+Mit =C-h= kann auf Hilfe zugegriffen werden, z. B.
+nützlich:
+
+* Einführung Emacs
+
+** Basics: Tastenbefehle
+
+Befehle, die mit =C-x= beginnen, sind meist globale.
+
+Befehle, die mit =C-c= beginnen, sind meist
+Major-Mode-abhängig.
+
+Mit =C-h= kann auf Hilfe zugegriffen werden, z. B.
+nützlich:
+- =C-h m= Major-Mode-Infos
+- =C-h f= Funktionen-Infos
+- =C-h v= Variablen-Infos
+
+* Einführung Emacs 
+
+** Buffer, Windows  and Frames
+
+* Einführung Emacs 
+
+** Buffer, Windows  and Frames
+
+aus der Emacs-Doku:
+
+* Einführung Emacs 
+
+** Buffer, Windows  and Frames
+
+aus der Emacs-Doku:
+
+- "A *frame* is a screen object that contains one or more
+  Emacs windows (see Windows)."
+
+* Einführung Emacs 
+
+** Buffer, Windows  and Frames
+
+aus der Emacs-Doku:
+
+- "A *frame* is a screen object that contains one or more
+  Emacs windows (see Windows)."
+
+- "A *window* is an area of the screen that is used to
+  display a buffer.
+
+* Einführung Emacs 
+
+** Buffer, Windows  and Frames
+
+aus der Emacs-Doku:
+
+- "A *frame* is a screen object that contains one or more
+  Emacs windows (see Windows)."
+
+- "A *window* is an area of the screen that is used to
+  display a buffer.
+
+- "A *buffer* is a Lisp object containing text to be
+  edited".
+
+* Einführung Emacs 
+
+** Major- und Minor-Modes
+
+
+
+* REST
+
+** Major- und Minor-Modes
+** Buffer / Windows / Frames
+
+** Emacs Lisp
+** Vorgefertigte Emacs-Distros
+- Spacemacs
+- Doom Emacs
+** Church of Emacs
+
+#+begin_quote
+“Emacs started out as a text editor, which became a way of life for many users
+ because they could do all their work on a computer while never exiting from
+ Emacs, and ultimately it became a religion as well.” -- Richard Stallman
+#+end_quote
+
+
+* Emacs Lisp
+
+- Syntax
+- Funktion (interactive)
+
+#+begin_src lisp
+;; Custom command.
+(defun show-current-time ()
+  "Show current time."
+  (interactive)
+  (message (current-time-string)))
+#+end_src
+
+* Konfiguration
+
+** Vorgehen init.el
+
+- Erst zusammen Emacs starten
+- dann in =init.el= erste 3 Zeilen auskommentieren
+- Emacs neustarten
+- Stück für Stück einkommentieren und auswerten (=C-x C-e=)
+
+** Weitere Konfigurationen
+
+- ?!use-package?!
+- Emacs as Server
+
+*** global settings
+
+(global-line-numbers-mode 1)
+
+*** hooks
+
+- Delete whitespace before saving
+
+  #+begin_src elisp
+  (add-hook 'before-save-hook #'delete-trailing-whitespace)
+  #+end_src
+
+*** paredit-mode
+
+zusammen installieren:
+
+- zu =package=-Liste hinzufügen
+- Hooks setzen
+
+#+begin_src lisp
+;; Enable Paredit.
+(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+(add-hook 'lisp-mode-hook 'enable-paredit-mode)
+#+end_src
+
+- ?Rainbow-Delimiters?
+
+#+begin_src elisp
+;; Enable Rainbow Delimiters.
+(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'ielm-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
+#+end_src
+
+*** Custom key sequences
+
+- whitespace Ende der Zeile entfernen
+
+#+begin_src lisp
+(global-set-key (kbd "C-c d") 'delete-trailing-whitespace)
+#+end_src
+
+* Major-/Minor-Modes
+
+- magit
+- projectile / project.el / ?persp-mode?
+- helm/ivy
+- latex
+- Coding
+  - elixir u lsp-mode
+  - clojure u cider-jack-in + REPL
+- org-mode
+- org-export
+- org-agenda und org-capture
+- Timeclock
+- mu4e
+- undo (undo-tree) und Code-Region-undo
+- Shell
+- Tramp
+- Key-Makros (Extrem: pro Zeile E-Mail versenden / neuen Buffer)
+
+- ?Treemacs?
+
+- ?persp-mode?
+
+- ?eyebrowse?
+
+- ?emacs-server daemon=...?
+  #+begin_src bash
+  emacs --daemon=project1
+  emacs --daemon=project2
+  Then, when I want to work on either of these projects, I can start a corresponding client, like:
+
+  emacsclient  --socket-name=project1 -t
+  emacsclient --socket-name=project2 -t
+  #+end_src
+
+* Eigene Library
+
+** Ideen
+
+- Protokoll-Mode
+  - Anwesende: hinzufügen mit E-Mail-Adresse nachschauen
+  - Am Schluss: =C-c C-m= verschickt Mail mit Protokoll an alle
+  - Johannes Vorschlag: von einem Protokoll auf Unterpunkte von
+    vorherigen Protokollen Link erstellen
+
+** Teilnehmer hinzufügen
+
+*** gehe zu org-headline "Anwesende"
+
+Code für Funktion:
+
+#+begin_src emacs-lisp
+(defun goto-anwesende ()
+  (save-excursion
+    (goto-line 1)
+    (setq isearch-string "* Anwesende")
+    (isearch-search)
+    (newline)
+    (newline)
+    (insert "- Kaan Sahin")))
+#+end_src
+
+
+
+*** E-Mail-Adressbuch nachschlagen
+
+von http://pragmaticemacs.com/emacs/tweaking-email-contact-completion-in-mu4e/
+
+#+begin_src emacs-lisp
+;;; NEEDED?
+(require 'subr-x)
+
+;;; NEEDED?
+;;my favourite contacts - these will be put at front of list
+(setq bjm/contact-file "/home/kaan/.emacs.dvanilla/.contacts")
+
+(defun bjm/read-contact-list ()
+  "Return a list of email addresses"
+  (with-temp-buffer
+    (insert-file-contents bjm/contact-file)
+    (split-string (buffer-string) "\n" t)))
+
+(defun bjm/ivy-select-and-insert-contact-anywhere ()
+  (interactive)
+  (let (contacts-list contact)
+    ;;append full sorted contacts list to favourites and delete duplicates
+    (setq contacts-list
+          (delq nil (delete-dups (append (bjm/read-contact-list)  (hash-table-keys mu4e~contacts)))))
+    (setq contact
+          (ivy-read "Contact: "
+                    contacts-list
+                    :re-builder #'ivy--regex
+                    :sort nil))
+        (unless (equal contact "")
+          (insert contact))))
+#+end_src
+
+musste oben =mu4e~sort-contacts-for-completion= rauslöschen, damit es
+kompiliert.
+
+hier mal paar sachen, die ich probiert hab:
+
+#+begin_src emacs-lisp
+(mu4e~compose-setup-completion)
+mu4e~contacts
+completion-at-point-functions
+(mu4e~compose-complete-contact "joha")
+#+end_src
+
+* Vorbereitung für Teilnehmer:innen
+
+- Emacs installieren (>= 26)
+- Konfiguration einspielen:
+  - Starte Emacs
+  - Drücke =Strg und x= und dann =Strg und f=
+  - Tippe ein: =~/.emacs.d/init.el=, dann =Enter=
+  - Kopiere Inhalt von FIXME URL
+  - Füge Inhalt ein in Emacs mit =Strg und y=
+  - Speichern mit =Strg und x= dann =Strg und s=
+  - Schließe Emacs und öffne es wieder
+  - Es sollte nach dem Starten eine Erfolgsmeldung kommen
+
+** init.el für Teilnehmer:innen
+
+*** Einstieg init.el von Simon
+
+ https://github.com/susam/emfy
+
+*** Weitere Snippets
+
+- Undo umbinden
+
+#+begin_src lisp
+;; Custom key sequences.
+(global-set-key (kbd "C-z") 'undo)
+#+end_src
+
+- Am Schluss:
+  #+begin_src lisp
+  (progn
+    (switch-to-buffer "a-random-buffer")
+    (insert "\n\nDu hast es geschafft, Emacs ist für das Tutorial eingerichtet!"))
+  #+end_
