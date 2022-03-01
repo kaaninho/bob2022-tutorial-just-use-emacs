@@ -1,4 +1,5 @@
 #+title: Ideen und Orga
+#+author: Kaan Sahin
 
 * Struktur
 
@@ -13,6 +14,8 @@
 
 ** Geschichte Emacs
 ** Unterschied zu gängigen IDEs
+** Buffer / Windows / Frames
+** Major- und Minor-Modes
 ** Tastenbefehle Basics
 
 C = Strg
@@ -31,6 +34,7 @@ C-x b = Strg gedrückt halten und dann x,
 ** Vorgefertigte Emacs-Distros
 - Spacemacs
 - Doom Emacs
+** Church of Emacs
 
 * Emacs Lisp
 
@@ -46,6 +50,7 @@ C-x b = Strg gedrückt halten und dann x,
 #+end_src
 
 * Konfiguration
+
 ** Vorgehen init.el
 
 - Erst zusammen Emacs starten
@@ -57,6 +62,7 @@ C-x b = Strg gedrückt halten und dann x,
 
 - ?!use-package?!
 - Emacs as Server
+
 *** global settings
 
 (global-line-numbers-mode 1)
@@ -117,9 +123,25 @@ zusammen installieren:
 - undo (undo-tree) und Code-Region-undo
 - Shell
 - Tramp
-- Keybindings (Extrem: pro Zeile E-Mail versenden)
+  - Gehe auf James in Konsole
+  - Öffne in Emacs Datei auf James.
+  - Let the fun begin
+- Key-Makros (Extrem: pro Zeile E-Mail versenden / neuen Buffer)
 
-- ?Treemacs?
+- Nur am Rand erwähnen: Man kann Emacs more-IDE-like machen mitn
+  - Treemacs
+  - persp-mode
+  - eyebrowse
+
+- ?emacs-server daemon=...?
+  #+begin_src bash
+  emacs --daemon=project1
+  emacs --daemon=project2
+  Then, when I want to work on either of these projects, I can start a corresponding client, like:
+
+  emacsclient  --socket-name=project1 -t
+  emacsclient --socket-name=project2 -t
+  #+end_src
 
 * Eigene Library
 
@@ -132,6 +154,26 @@ zusammen installieren:
     vorherigen Protokollen Link erstellen
 
 ** Teilnehmer hinzufügen
+
+*** gehe zu org-headline "Anwesende"
+
+Code für Funktion:
+
+#+begin_src emacs-lisp
+(defun goto-anwesende ()
+  (save-excursion
+    (goto-line 1)
+    (setq isearch-string "* Anwesende")
+    (isearch-search)
+    (newline)
+    (newline)
+    (insert "- Kaan Sahin")))
+#+end_src
+
+
+
+*** E-Mail-Adressbuch nachschlagen
+
 von http://pragmaticemacs.com/emacs/tweaking-email-contact-completion-in-mu4e/
 
 #+begin_src emacs-lisp
@@ -163,42 +205,6 @@ von http://pragmaticemacs.com/emacs/tweaking-email-contact-completion-in-mu4e/
           (insert contact))))
 #+end_src
 
-
-das braucht es glaub gar nicht:
-
-#+begin_src emacs-lisp
-(defun bjm/ivy-select-and-insert-contact (&optional start)
-  (interactive)
-  ;;make sure mu4e contacts list is updated - I was having
-  ;;intermittent problems that this was empty but couldn't see why
-  (mu4e~request-contacts)
-  (let ((mail-abbrev-mode-regexp mu4e~compose-address-fields-regexp)
-        (eoh ;; end-of-headers
-         (save-excursion
-           (goto-char (point-min))
-           (search-forward-regexp mail-header-separator nil t)))
-        ;;append full sorted contacts list to favourites and delete duplicates
-        (contacts-list
-         (delq nil (delete-dups (append (bjm/read-contact-list)  (hash-table-keys mu4e~contacts))))))
-    (when (and eoh (> eoh (point)) (mail-abbrev-in-expansion-header-p))
-      (let* ((end (point))
-             (start
-              (or start
-                  (save-excursion
-                    (re-search-backward "\\(\\`\\|[\n:,]\\)[ \t]*")
-                    (goto-char (match-end 0))
-                    (point))))
-             (contact
-              (ivy-read "Contact: "
-                        contacts-list
-                        :re-builder #'ivy--regex
-                        :sort nil
-                        :initial-input (buffer-substring-no-properties start end))))
-        (unless (equal contact "")
-          (kill-region start end)
-          (insert contact)))))
-#+end_src
-
 musste oben =mu4e~sort-contacts-for-completion= rauslöschen, damit es
 kompiliert.
 
@@ -217,12 +223,12 @@ completion-at-point-functions
 - Konfiguration einspielen:
   - Starte Emacs
   - Drücke =Strg und x= und dann =Strg und f=
-  - Tippe ein: =~/.emacs.d/init.el=
-  - Kopiere Inhalt von FIXME
+  - Tippe ein: =~/.emacs.d/init.el=, dann =Enter=
+  - Kopiere Inhalt von FIXME URL
   - Füge Inhalt ein in Emacs mit =Strg und y=
   - Speichern mit =Strg und x= dann =Strg und s=
   - Schließe Emacs und öffne es wieder
-  - Es sollte nach einer (sehr kurzen) Zeit eine Erfolgsmeldung kommen
+  - Es sollte nach dem Starten eine Erfolgsmeldung kommen
 
 ** init.el für Teilnehmer:innen
 
@@ -230,7 +236,7 @@ completion-at-point-functions
 
  https://github.com/susam/emfy
 
-*** Weiter Snippets
+*** Weitere Snippets
 
 - Undo umbinden
 
@@ -245,3 +251,20 @@ completion-at-point-functions
     (switch-to-buffer "a-random-buffer")
     (insert "\n\nDu hast es geschafft, Emacs ist für das Tutorial eingerichtet!"))
   #+end_
+
+* Zeitlicher Ablauf
+
+Uhrzeit: 16:20 - 17:50
+
+-> 1,5 Stunden
+
+| Abschnitt      | Zeit |
+|----------------+------|
+| Einführung     |   20 |
+| Emacs Lisp     |   10 |
+| Konfiguration  |   20 |
+| Packages       |   20 |
+| Eigene Library |   20 |
+|----------------+------|
+| Summe          |   90 |
+
