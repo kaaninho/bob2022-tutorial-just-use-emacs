@@ -81,7 +81,7 @@ Warum?
 
 ** Emacs ist /alt/ und wird /trotzdem/ noch benutzt - warum?
 
-- "Great at Editing"
+- "Great at Editing" - "Don't leave the keyboard!"
 - "Editor of a Lifetime"
 - "Living in Emacs"
 - "Extensibility"
@@ -171,21 +171,22 @@ Major-Mode-abhängig.
 
 Mit =C-h= kann auf Hilfe zugegriffen werden, z. B.
 nützlich:
+
 - =C-h m= Major-Mode-Infos
 - =C-h f= Funktionen-Infos
 - =C-h v= Variablen-Infos
 
-* Einführung Emacs 
+* Einführung Emacs
 
 ** Buffer, Windows  and Frames
 
-* Einführung Emacs 
+* Einführung Emacs
 
 ** Buffer, Windows  and Frames
 
 aus der Emacs-Doku:
 
-* Einführung Emacs 
+* Einführung Emacs
 
 ** Buffer, Windows  and Frames
 
@@ -194,7 +195,7 @@ aus der Emacs-Doku:
 - "A *frame* is a screen object that contains one or more
   Emacs windows (see Windows)."
 
-* Einführung Emacs 
+* Einführung Emacs
 
 ** Buffer, Windows  and Frames
 
@@ -206,7 +207,7 @@ aus der Emacs-Doku:
 - "A *window* is an area of the screen that is used to
   display a buffer.
 
-* Einführung Emacs 
+* Einführung Emacs
 
 ** Buffer, Windows  and Frames
 
@@ -326,7 +327,10 @@ Live-Hacking!
 * Church of Emacs
 
 #+begin_quote
-“Emacs started out as a text editor, which became a way of life for many users
- because they could do all their work on a computer while never exiting from
- Emacs, and ultimately it became a religion as well.” -- Richard Stallman
+“Emacs started out as a text editor, which became a way
+ of life for many users because they could do all their
+ work on a computer while never exiting from Emacs, and
+ ultimately it became a religion as well.”
+
+-- Richard Stallman
 #+end_quote

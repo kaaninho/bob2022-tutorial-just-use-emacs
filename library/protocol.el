@@ -31,7 +31,7 @@
                     :sort nil))
     (unless (equal contact "")
       (setq protocol/contacts (cons contact protocol/contacts))
-      contact)))
+      (insert contact))))
 
 (defun protocol/add-contact ()
   "Adds a contact to the headline \"Anwesende\""
@@ -40,7 +40,7 @@
 
 (defun protocol/insert-contacts (contacts)
   (require 'seq)
-  (let ((contacts-string (seq-reduce (lambda (acc a) (concat a ";" acc))
+  (let ((contacts-string (seq-reduce (lambda (acc a) (concat a "," acc))
                                      contacts
                                      "")))
     (insert contacts-string)))

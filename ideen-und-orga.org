@@ -14,7 +14,6 @@ Uhrzeit: 16:20 - 17:50
 3. Interessante Major-/Minor-Modes
 4. Eigene Library
 
-
 | Abschnitt      | Zeit |
 |----------------+------|
 | Einführung     |   25 |
@@ -127,17 +126,14 @@ zusammen installieren:
 
 * 3. Packages
 
-- helm/ivy
 - projectile
 - Coding
   - python u lsp-mode
   - clojure u cider-jack-in + REPL
-- latex
 - org-mode
   - org-export
   - org-agenda und org-capture
 - magit
-- Timeclock
 - mu4e
 - undo (undo-tree) und Code-Region-undo
 - Shell
@@ -145,12 +141,7 @@ zusammen installieren:
   - Gehe auf James in Konsole
   - Öffne in Emacs Datei auf James.
   - Let the fun begin
-- Key-Makros (Extrem: pro Zeile E-Mail versenden / neuen Buffer)
-- Evil-Mode
-- Nur am Rand erwähnen: Man kann Emacs more-IDE-like machen mitn
-  - Treemacs
-  - persp-mode
-  - eyebrowse
+- Key-Makros (neuen Buffer)
 
 ** org-mode
 
@@ -169,6 +160,16 @@ return 3 + 4
 - org-todo
 - org-agenda
 - org-capture
+- org-timeclock
+
+** Weitere Modi
+
+- latex
+- Evil-Mode
+- Nur am Rand erwähnen: Man kann Emacs more-IDE-like machen mitn
+  - Treemacs
+  - persp-mode
+  - eyebrowse
 
 * 4. Eigene Library
 
