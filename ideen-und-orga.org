@@ -24,7 +24,7 @@ Uhrzeit: 16:20 - 17:50
 |----------------+------|
 | Summe          |   90 |
 
-* Einführung Emacs
+* 1. Einführung Emacs
 
 ** Geschichte Emacs
 ** Unterschied zu gängigen IDEs
@@ -43,6 +43,13 @@ C-x b = Strg gedrückt halten und dann x,
 - Menü: M-x und dann Funktionsnamen eintippen
   -> Beispiel: display-line-numbers-mode
 ** Major- und Minor-Modes
+
+- Zeige kurz 2-3 Major-Modes und Minor-Modes
+  - org-mode
+  - clojure-mode
+  - display-line-numbers-mode
+  - paredit-mode
+
 ** Emacs Lisp
 
  - Syntax
@@ -61,7 +68,7 @@ C-x b = Strg gedrückt halten und dann x,
 - Spacemacs
 - Doom Emacs
 
-* Konfiguration
+* 2. Konfiguration
 
 ** Vorgehen init.el
 
@@ -118,13 +125,8 @@ zusammen installieren:
 (global-set-key (kbd "C-c d") 'delete-trailing-whitespace)
 #+end_src
 
-* Packages
+* 3. Packages
 
-- Zeige kurz 2-3 Major-Modes und Minor-Modes
-  - org-mode
-  - clojure-mode
-  - display-line-numbers-mode
-  - paredit-mode
 - helm/ivy
 - projectile
 - Coding
@@ -150,7 +152,25 @@ zusammen installieren:
   - persp-mode
   - eyebrowse
 
-* Eigene Library
+** org-mode
+
+- Outlining-Tool (so habe ich die Vorbereitung auf dieses Tutorial gemacht)
+  - Überschriften, klappbar, verschiebbar, demote, promote
+- Aufzählungen, Fettdruck, italic etc
+- Tabellen + Kalkulation
+- org-babel:
+
+#+begin_src python
+return 3 + 4
+#+end_src
+
+- org-present (diese Folien)
+- org-export + org-reveal
+- org-todo
+- org-agenda
+- org-capture
+
+* 4. Eigene Library
 
 ** Ideen
 
