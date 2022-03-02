@@ -316,7 +316,15 @@ Live-Hacking!
 
 * Packages
 
-I don't use Emacs, I live in Emacs!
+I don't just use Emacs, I live in Emacs!
+
+* Packages
+
+I don't just use Emacs, I live in Emacs!
+
+*Alles* passiert in Emacs.
+
+Weniger Context Switches.
 
 * Eigene Library entwickeln
 
