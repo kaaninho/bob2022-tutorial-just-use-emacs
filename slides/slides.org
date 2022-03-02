@@ -356,75 +356,7 @@ zusammen installieren:
 
 * Eigene Library
 
-** Ideen
 
-- Protokoll-Mode
-  - Anwesende: hinzufügen mit E-Mail-Adresse nachschauen
-  - Am Schluss: =C-c C-m= verschickt Mail mit Protokoll an alle
-  - Johannes Vorschlag: von einem Protokoll auf Unterpunkte von
-    vorherigen Protokollen Link erstellen
-
-** Teilnehmer hinzufügen
-
-*** gehe zu org-headline "Anwesende"
-
-Code für Funktion:
-
-#+begin_src emacs-lisp
-(defun goto-anwesende ()
-  (save-excursion
-    (goto-line 1)
-    (setq isearch-string "* Anwesende")
-    (isearch-search)
-    (newline)
-    (newline)
-    (insert "- Kaan Sahin")))
-#+end_src
-
-*** E-Mail-Adressbuch nachschlagen
-
-von http://pragmaticemacs.com/emacs/tweaking-email-contact-completion-in-mu4e/
-
-#+begin_src emacs-lisp
-;;; NEEDED?
-(require 'subr-x)
-
-;;; NEEDED?
-;;my favourite contacts - these will be put at front of list
-(setq bjm/contact-file "/home/kaan/.emacs.dvanilla/.contacts")
-
-(defun bjm/read-contact-list ()
-  "Return a list of email addresses"
-  (with-temp-buffer
-    (insert-file-contents bjm/contact-file)
-    (split-string (buffer-string) "\n" t)))
-
-(defun bjm/ivy-select-and-insert-contact-anywhere ()
-  (interactive)
-  (let (contacts-list contact)
-    ;;append full sorted contacts list to favourites and delete duplicates
-    (setq contacts-list
-          (delq nil (delete-dups (append (bjm/read-contact-list)  (hash-table-keys mu4e~contacts)))))
-    (setq contact
-          (ivy-read "Contact: "
-                    contacts-list
-                    :re-builder #'ivy--regex
-                    :sort nil))
-        (unless (equal contact "")
-          (insert contact))))
-#+end_src
-
-musste oben =mu4e~sort-contacts-for-completion= rauslöschen, damit es
-kompiliert.
-
-hier mal paar sachen, die ich probiert hab:
-
-#+begin_src emacs-lisp
-(mu4e~compose-setup-completion)
-mu4e~contacts
-completion-at-point-functions
-(mu4e~compose-complete-contact "joha")
-#+end_src
 
 * Vorbereitung für Teilnehmer:innen
 
