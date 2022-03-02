@@ -352,6 +352,8 @@ zusammen installieren:
   emacsclient --socket-name=project2 -t
   #+end_src
 
+- Evil-Mode
+
 * Eigene Library
 
 ** Ideen
@@ -378,8 +380,6 @@ Code für Funktion:
     (newline)
     (insert "- Kaan Sahin")))
 #+end_src
-
-
 
 *** E-Mail-Adressbuch nachschlagen
 

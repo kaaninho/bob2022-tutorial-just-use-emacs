@@ -7,8 +7,7 @@
 2. Emacs Lisp
 3. Konfiguration
 4. Interessante Major-/Minor-Modes
-5. Evil-Mode
-6. Eigene Library
+5. Eigene Library
 
 * Einführung Emacs
 
@@ -142,6 +141,8 @@ zusammen installieren:
   emacsclient  --socket-name=project1 -t
   emacsclient --socket-name=project2 -t
   #+end_src
+
+- Evil-Mode
 
 * Eigene Library
 
