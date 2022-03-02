@@ -4,10 +4,9 @@
 * Struktur
 
 1. Einführung Emacs
-2. Emacs Lisp
-3. Konfiguration
-4. Interessante Major-/Minor-Modes
-5. Eigene Library
+2. Konfiguration
+3. Interessante Major-/Minor-Modes
+4. Eigene Library
 
 * Einführung Emacs
 
@@ -107,16 +106,21 @@ zusammen installieren:
 
 * Major-/Minor-Modes
 
-- magit
-- projectile / project.el / ?persp-mode?
+- Zeige kurz 2-3 Major-Modes und Minor-Modes
+  - org-mode
+  - clojure-mode
+  - display-line-numbers-mode
+  - paredit-mode
 - helm/ivy
+- projectile
 - latex
 - Coding
   - elixir u lsp-mode
   - clojure u cider-jack-in + REPL
+- magit
 - org-mode
-- org-export
-- org-agenda und org-capture
+  - org-export
+  - org-agenda und org-capture
 - Timeclock
 - mu4e
 - undo (undo-tree) und Code-Region-undo
@@ -126,23 +130,11 @@ zusammen installieren:
   - Öffne in Emacs Datei auf James.
   - Let the fun begin
 - Key-Makros (Extrem: pro Zeile E-Mail versenden / neuen Buffer)
-
+- Evil-Mode
 - Nur am Rand erwähnen: Man kann Emacs more-IDE-like machen mitn
   - Treemacs
   - persp-mode
   - eyebrowse
-
-- ?emacs-server daemon=...?
-  #+begin_src bash
-  emacs --daemon=project1
-  emacs --daemon=project2
-  Then, when I want to work on either of these projects, I can start a corresponding client, like:
-
-  emacsclient  --socket-name=project1 -t
-  emacsclient --socket-name=project2 -t
-  #+end_src
-
-- Evil-Mode
 
 * Eigene Library
 
@@ -261,11 +253,10 @@ Uhrzeit: 16:20 - 17:50
 
 | Abschnitt      | Zeit |
 |----------------+------|
-| Einführung     |   20 |
-| Emacs Lisp     |   10 |
+| Einführung     |   25 |
 | Konfiguration  |   20 |
 | Packages       |   20 |
-| Eigene Library |   20 |
+| Eigene Library |   25 |
 |----------------+------|
 | Summe          |   90 |
 
