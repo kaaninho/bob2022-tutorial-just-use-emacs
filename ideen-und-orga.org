@@ -1,6 +1,12 @@
 #+title: Ideen und Orga
 #+author: Kaan Sahin
 
+* Zeitlicher Ablauf
+
+Uhrzeit: 16:20 - 17:50
+
+-> 1,5 Stunden
+
 * Struktur
 
 1. Einführung Emacs
@@ -8,12 +14,21 @@
 3. Interessante Major-/Minor-Modes
 4. Eigene Library
 
+
+| Abschnitt      | Zeit |
+|----------------+------|
+| Einführung     |   25 |
+| Konfiguration  |   20 |
+| Packages       |   20 |
+| Eigene Library |   25 |
+|----------------+------|
+| Summe          |   90 |
+
 * Einführung Emacs
 
 ** Geschichte Emacs
 ** Unterschied zu gängigen IDEs
 ** Buffer / Windows / Frames
-** Major- und Minor-Modes
 ** Tastenbefehle Basics
 
 C = Strg
@@ -27,25 +42,24 @@ C-x b = Strg gedrückt halten und dann x,
 - Abbruch: C-g
 - Menü: M-x und dann Funktionsnamen eintippen
   -> Beispiel: display-line-numbers-mode
-
+** Major- und Minor-Modes
 ** Emacs Lisp
+
+ - Syntax
+ - Funktion (interactive)
+
+ #+begin_src lisp
+ ;; Custom command.
+ (defun show-current-time ()
+   "Show current time."
+   (interactive)
+   (message (current-time-string)))
+ #+end_src
+
 ** Vorgefertigte Emacs-Distros
+
 - Spacemacs
 - Doom Emacs
-** Church of Emacs
-
-* Emacs Lisp
-
-- Syntax
-- Funktion (interactive)
-
-#+begin_src lisp
-;; Custom command.
-(defun show-current-time ()
-  "Show current time."
-  (interactive)
-  (message (current-time-string)))
-#+end_src
 
 * Konfiguration
 
@@ -104,7 +118,7 @@ zusammen installieren:
 (global-set-key (kbd "C-c d") 'delete-trailing-whitespace)
 #+end_src
 
-* Major-/Minor-Modes
+* Packages
 
 - Zeige kurz 2-3 Major-Modes und Minor-Modes
   - org-mode
@@ -113,14 +127,14 @@ zusammen installieren:
   - paredit-mode
 - helm/ivy
 - projectile
-- latex
 - Coding
-  - elixir u lsp-mode
+  - python u lsp-mode
   - clojure u cider-jack-in + REPL
-- magit
+- latex
 - org-mode
   - org-export
   - org-agenda und org-capture
+- magit
 - Timeclock
 - mu4e
 - undo (undo-tree) und Code-Region-undo
@@ -244,19 +258,4 @@ completion-at-point-functions
     (switch-to-buffer "a-random-buffer")
     (insert "\n\nDu hast es geschafft, Emacs ist für das Tutorial eingerichtet!"))
   #+end_
-
-* Zeitlicher Ablauf
-
-Uhrzeit: 16:20 - 17:50
-
--> 1,5 Stunden
-
-| Abschnitt      | Zeit |
-|----------------+------|
-| Einführung     |   25 |
-| Konfiguration  |   20 |
-| Packages       |   20 |
-| Eigene Library |   25 |
-|----------------+------|
-| Summe          |   90 |
 

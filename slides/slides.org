@@ -70,14 +70,12 @@ Warum?
 - Perry E. Metzger
 #+end_quote
 
-
 * Einführung Emacs
 
 ** Emacs ist /alt/ und wird /trotzdem/ noch benutzt - warum?
 
 #+ATTR_ORG: :width 1200
 [[./great-at-editing.png]]
-
 
 * Einführung Emacs
 
@@ -227,58 +225,69 @@ aus der Emacs-Doku:
 
 ** Major- und Minor-Modes
 
-
-
-* REST
+* Einführung Emacs 
 
 ** Major- und Minor-Modes
-** Buffer / Windows / Frames
+
+Es ist/sind pro Buffer
+
+- genau ein Major-Mode
+- mehrere Minor-Modes
+
+aktiv
+
+* Einführung Emacs
 
 ** Emacs Lisp
-** Vorgefertigte Emacs-Distros
-- Spacemacs
-- Doom Emacs
-** Church of Emacs
 
-#+begin_quote
-“Emacs started out as a text editor, which became a way of life for many users
- because they could do all their work on a computer while never exiting from
- Emacs, and ultimately it became a religion as well.” -- Richard Stallman
-#+end_quote
+* Einführung Emacs
 
+** Emacs Lisp
 
-* Emacs Lisp
+*** Syntax
 
-- Syntax
-- Funktion (interactive)
+#+begin_src emacs-lisp
+(+ 15 7)
 
-#+begin_src lisp
-;; Custom command.
+(setq my-var "Hallo")
+
 (defun show-current-time ()
   "Show current time."
   (interactive)
   (message (current-time-string)))
 #+end_src
 
+* Einführung Emacs
+
+** Vorgefertigte Emacs-Distros
+
+- Spacemacs
+- Doom Emacs
+
+haben gute Defaults, leichteres Paketmanagement
+
 * Konfiguration
 
-** Vorgehen init.el
+** init.el
 
 - Erst zusammen Emacs starten
-- dann in =init.el= erste 3 Zeilen auskommentieren
+- dann in =init.el= erste Zeilen auskommentieren
 - Emacs neustarten
 - Stück für Stück einkommentieren und auswerten (=C-x C-e=)
 
-** Weitere Konfigurationen
+* Konfiguration
 
-- ?!use-package?!
-- Emacs as Server
+** Paketmanagement
 
-*** global settings
+Benutze =usepackage=
 
-(global-line-numbers-mode 1)
+* Konfiguration
 
-*** hooks
+** Paketmanagement
+
+Benutze =usepackage=
+
+** Hooks
 
 - Delete whitespace before saving
 
@@ -286,30 +295,13 @@ aus der Emacs-Doku:
   (add-hook 'before-save-hook #'delete-trailing-whitespace)
   #+end_src
 
-*** paredit-mode
+* Konfiguration
 
-zusammen installieren:
+** Eigene Key Bindings
 
-- zu =package=-Liste hinzufügen
-- Hooks setzen
+* Konfiguration
 
-#+begin_src lisp
-;; Enable Paredit.
-(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'lisp-mode-hook 'enable-paredit-mode)
-#+end_src
-
-- ?Rainbow-Delimiters?
-
-#+begin_src elisp
-;; Enable Rainbow Delimiters.
-(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'ielm-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
-#+end_src
-
-*** Custom key sequences
+** Eigene Key Bindings
 
 - whitespace Ende der Zeile entfernen
 
@@ -317,78 +309,24 @@ zusammen installieren:
 (global-set-key (kbd "C-c d") 'delete-trailing-whitespace)
 #+end_src
 
-* Major-/Minor-Modes
+* Packages
 
-- magit
-- projectile / project.el / ?persp-mode?
-- helm/ivy
-- latex
-- Coding
-  - elixir u lsp-mode
-  - clojure u cider-jack-in + REPL
-- org-mode
-- org-export
-- org-agenda und org-capture
-- Timeclock
-- mu4e
-- undo (undo-tree) und Code-Region-undo
-- Shell
-- Tramp
-- Key-Makros (Extrem: pro Zeile E-Mail versenden / neuen Buffer)
+Live-Hacking!
 
-- ?Treemacs?
+* Packages
 
-- ?persp-mode?
+I don't use Emacs, I live in Emacs!
 
-- ?eyebrowse?
+* Eigene Library entwickeln
 
-- ?emacs-server daemon=...?
-  #+begin_src bash
-  emacs --daemon=project1
-  emacs --daemon=project2
-  Then, when I want to work on either of these projects, I can start a corresponding client, like:
+Live-Hacking!
 
-  emacsclient  --socket-name=project1 -t
-  emacsclient --socket-name=project2 -t
-  #+end_src
+* Church of Emacs
 
-- Evil-Mode
+* Church of Emacs
 
-* Eigene Library
-
-
-
-* Vorbereitung für Teilnehmer:innen
-
-- Emacs installieren (>= 26)
-- Konfiguration einspielen:
-  - Starte Emacs
-  - Drücke =Strg und x= und dann =Strg und f=
-  - Tippe ein: =~/.emacs.d/init.el=, dann =Enter=
-  - Kopiere Inhalt von FIXME URL
-  - Füge Inhalt ein in Emacs mit =Strg und y=
-  - Speichern mit =Strg und x= dann =Strg und s=
-  - Schließe Emacs und öffne es wieder
-  - Es sollte nach dem Starten eine Erfolgsmeldung kommen
-
-** init.el für Teilnehmer:innen
-
-*** Einstieg init.el von Simon
-
- https://github.com/susam/emfy
-
-*** Weitere Snippets
-
-- Undo umbinden
-
-#+begin_src lisp
-;; Custom key sequences.
-(global-set-key (kbd "C-z") 'undo)
-#+end_src
-
-- Am Schluss:
-  #+begin_src lisp
-  (progn
-    (switch-to-buffer "a-random-buffer")
-    (insert "\n\nDu hast es geschafft, Emacs ist für das Tutorial eingerichtet!"))
-  #+end_
+#+begin_quote
+“Emacs started out as a text editor, which became a way of life for many users
+ because they could do all their work on a computer while never exiting from
+ Emacs, and ultimately it became a religion as well.” -- Richard Stallman
+#+end_quote

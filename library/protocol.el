@@ -1,5 +1,3 @@
-;; With help from: http://pragmaticemacs.com/emacs/tweaking-email-contact-completion-in-mu4e/
-
 (defun protocol/goto-anwesende (insert-something)
   (save-excursion
     (goto-line 7)
@@ -13,6 +11,7 @@
 (setq protocol/title "")
 (setq protocol/date "")
 
+;; With help from: http://pragmaticemacs.com/emacs/tweaking-email-contact-completion-in-mu4e/
 (defun protocol/read-contact-list ()
   "Return a list of email addresses"
   (with-temp-buffer
@@ -32,9 +31,10 @@
                     :sort nil))
     (unless (equal contact "")
       (setq protocol/contacts (cons contact protocol/contacts))
-      (insert contact))))
+      contact)))
 
 (defun protocol/add-contact ()
+  "Adds a contact to the headline \"Anwesende\""
   (interactive)
   (protocol/goto-anwesende #'protocol/select-and-insert-contact))
 
@@ -46,6 +46,7 @@
     (insert contacts-string)))
 
 (defun protocol/compose-mail ()
+  "Inserts buffer content and contacts into a compose-mail buffer"
   (interactive)
   (mark-page)
   (kill-ring-save (point-min) (point-max))
@@ -60,6 +61,7 @@
   (yank))
 
 (defun protocol/protocol ()
+  "Opens a new org buffer with protocol-minor-mode enabled."
   (interactive)
   (setq protocol/title (read-string "Protokoll Überschrift: "))
   (setq protocol/date (format-time-string "%Y-%m-%d"))
@@ -77,7 +79,7 @@
 (define-minor-mode protocol-mode
   "This is a minor mode for writing a protocol in org-mode"
   :lighter " Protokoll"
-    :keymap (let ((map (make-sparse-keymap)))
-              (define-key map (kbd "C-c C-m") 'protocol/compose-mail)
-              (define-key map (kbd "C-c C-a") 'protocol/add-contact)
-              map))
+  :keymap (let ((map (make-sparse-keymap)))
+            (define-key map (kbd "C-c C-m") 'protocol/compose-mail)
+            (define-key map (kbd "C-c C-a") 'protocol/add-contact)
+            map))
