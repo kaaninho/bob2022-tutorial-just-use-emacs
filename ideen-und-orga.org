@@ -130,9 +130,6 @@ zusammen installieren:
 - Coding
   - python u lsp-mode
   - clojure u cider-jack-in + REPL
-- org-mode
-  - org-export
-  - org-agenda und org-capture
 - magit
 - mu4e
 - undo (undo-tree) und Code-Region-undo
@@ -279,4 +276,3 @@ completion-at-point-functions
     (switch-to-buffer "a-random-buffer")
     (insert "\n\nDu hast es geschafft, Emacs ist für das Tutorial eingerichtet!"))
   #+end_
-
