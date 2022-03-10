@@ -1,8 +1,8 @@
-(defun protocol/goto-anwesende (insert-something)
+(defun protocol/goto-anwesende (name)
   (save-excursion
     (goto-line 7)
     (insert "- ")
-    (funcall insert-something)
+    (insert name)
     (newline)
     (newline)))
 
@@ -12,18 +12,11 @@
 (setq protocol/date "")
 
 ;; With help from: http://pragmaticemacs.com/emacs/tweaking-email-contact-completion-in-mu4e/
-(defun protocol/read-contact-list ()
-  "Return a list of email addresses"
-  (with-temp-buffer
-    (insert-file-contents protocol/contact-file)
-    (split-string (buffer-string) "\n" t)))
 
 (defun protocol/select-and-insert-contact ()
   (interactive)
   (let (contacts-list contact)
-    ;;append full sorted contacts list to favourites and delete duplicates
-    (setq contacts-list
-          (delq nil (delete-dups (append (protocol/read-contact-list)  (hash-table-keys mu4e~contacts)))))
+    (setq contacts-list (hash-table-keys mu4e~contacts))
     (setq contact
           (ivy-read "Contact: "
                     contacts-list
@@ -31,7 +24,7 @@
                     :sort nil))
     (unless (equal contact "")
       (setq protocol/contacts (cons contact protocol/contacts))
-      (insert contact))))
+      contact)))
 
 (defun protocol/add-contact ()
   "Adds a contact to the headline \"Anwesende\""
