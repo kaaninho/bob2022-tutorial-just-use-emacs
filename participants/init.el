@@ -9,7 +9,7 @@
 (load-theme 'leuven)
 
 ;; Show stray whitespace.
-;; (setq-default show-trailing-whitespace t)
+;; (setq-default show-trailing-whitespace nil)
 ;; (setq-default indicate-empty-lines t)
 
 ;; Use spaces, not tabs, for indentation.
