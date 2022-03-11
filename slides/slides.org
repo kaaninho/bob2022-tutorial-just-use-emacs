@@ -226,11 +226,11 @@ aus der Emacs-Doku:
 - "A *buffer* is a Lisp object containing text to be
   edited".
 
-* Einführung Emacs 
+* Einführung Emacs
 
 ** Major- und Minor-Modes
 
-* Einführung Emacs 
+* Einführung Emacs
 
 ** Major- und Minor-Modes
 
@@ -284,13 +284,13 @@ haben gute Defaults, leichteres Paketmanagement
 
 ** Paketmanagement
 
-Benutze =usepackage=
+Benutze =use-package=
 
 * Konfiguration
 
 ** Paketmanagement
 
-Benutze =usepackage=
+Benutze =use-package=
 
 ** Hooks
 
