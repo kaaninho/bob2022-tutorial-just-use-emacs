@@ -29,7 +29,7 @@
 (defun protocol/add-contact ()
   "Adds a contact to the headline \"Anwesende\""
   (interactive)
-  (protocol/goto-anwesende #'protocol/select-and-insert-contact))
+  (protocol/goto-anwesende (protocol/select-and-insert-contact)))
 
 (defun protocol/insert-contacts (contacts)
   (require 'seq)
